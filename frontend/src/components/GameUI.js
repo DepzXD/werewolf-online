@@ -48,7 +48,7 @@ const ModelStyles = styled.div`
   margin-top: 0;
   justify-content: center;
   align-items: center;
-  color: #feeeda;
+  color: ${({ theme }) => theme.secondary};
 
   h4 {
     margin: 0.6rem;
@@ -56,18 +56,18 @@ const ModelStyles = styled.div`
     font-weight: 400;
   }
   h4.turn {
-    color: #ad251b;
+    color: ${({ theme }) => theme.red};
   }
   button {
     font-size: 1rem;
     background: none;
-    border: 4px solid hotpink;
+    border: 4px solid ${({ theme }) => theme.primary};
     border-radius: 10px;
     width: 7rem;
     height: 2.3rem;
     margin-top: 1rem;
     font-weight: 600;
-    color: hotpink;
+    color: ${({ theme }) => theme.primary};
     cursor: pointer;
   }
 `;
@@ -149,12 +149,3 @@ export default function GameUI({ state, socketRef, playerName, room }) {
     </React.Fragment>
   );
 }
-
-// {
-//   "game": {
-//     "deck": { },
-//     "players": ["sadad", "wwww", "eee", "rrrr"]
-//   },
-//   "players": ["sadad", "wwww", "eee", "rrrr"],
-//   "roomState": "started"
-// }

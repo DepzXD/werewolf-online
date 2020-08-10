@@ -15,31 +15,31 @@ const ModelStyles = styled.div`
   h1 {
     margin: 0 0 0.8rem 0;
     font-size: 2.5rem;
-    color: #feeeda;
+    color: ${({ theme }) => theme.primary};
   }
   h2 {
     text-align: center;
     font-weight: 600;
-    color: #feeeda;
+    color: ${({ theme }) => theme.primary};
     margin: 0.5rem;
   }
   h4 {
     font-size: 18px;
     font-weight: 400;
-    color: #feeeda;
+    color: ${({ theme }) => theme.secondary};
     margin-top: 0;
     margin-bottom: 0;
   }
   button {
     font-size: 1.3rem;
     background: none;
-    border: 4px solid #feeeda;
+    border: 4px solid ${({ theme }) => theme.primary};
     border-radius: 10px;
     width: 9rem;
     height: 3rem;
     margin-top: 2rem;
     font-weight: 600;
-    color: #feeeda;
+    color: ${({ theme }) => theme.primary};
     cursor: pointer;
   }
 `;
