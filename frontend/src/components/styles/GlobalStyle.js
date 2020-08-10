@@ -15,11 +15,12 @@ export const theme = {
 
 const GlobalStyles = createGlobalStyle`
   html {
-      font-family: 'Roboto', sans-serif;
+      font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
       font-weight: normal;
       font-style: normal;
       box-sizing: border-box;
-      font-size: 10px;
       background: ${({ theme }) => theme.background};
   }
   *, *:before, *:after {
@@ -28,18 +29,19 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: 2rem;
-    line-height: 2;
   }
   h1,h2,h3,p {
     color: ${({ theme }) => theme.primary};
     margin: 0;
-    line-height: 1.4;
   }
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.secondary};;
     margin: 0;
+  }
+  li {
+    list-style: none;
+    font-size: 1.1rem;
   }
 `;
 export default GlobalStyles;
