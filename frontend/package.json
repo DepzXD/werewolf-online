@@ -8,8 +8,7 @@
     "clear-build-cache": "rm -rf .cache/ dist/",
     "format": "prettier \"src/**/*.{js, html}\" --write ",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "build": "parcel build index.html",
-    "deploy": "gh-pages -d dist"
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -21,7 +20,15 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5"
   },
   "browserslist": {
     "production": [

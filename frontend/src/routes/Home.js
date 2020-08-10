@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { createRoom, joinRoom } from '../utils/api';
 import { Redirect } from 'react-router-dom';
 
@@ -48,65 +48,73 @@ const InputStyle = styled.input`
   padding: 0 0.4rem;
   text-align: center;
   background: transparent;
-`
+`;
 
 export default function Home() {
-    const [nameInput, setNameInput] = React.useState('');
-    return (
-      <HomeStyles className="App">
-        <h1 className="logo">Werecat Online</h1>
-        <div>
-            <InputStyle type="text" value={nameInput} placeholder="Join as" onChange={(e) => setNameInput(e.target.value)} />
-        </div>
-        <CreateOrJoinRoom name={nameInput} />
+  const [nameInput, setNameInput] = React.useState('');
+  return (
+    <HomeStyles className="App">
+      <h1 className="logo">Werecat Online</h1>
+      <div>
+        <InputStyle
+          type="text"
+          value={nameInput}
+          placeholder="Join as"
+          onChange={(e) => setNameInput(e.target.value)}
+        />
+      </div>
+      <CreateOrJoinRoom name={nameInput} />
     </HomeStyles>
-    );
+  );
 }
 
 function CreateOrJoinRoom({ name }) {
-    const [viewState, setViewState] = React.useState(0);
-    const [roomCodeInput, setRoomCodeInput] = React.useState('');
-    const [redirect, setRedirect] = React.useState(false);
-    function handleJoinRoom() {
-        if (name.length > 0 && roomCodeInput.length === 4) {
-            joinRoom(name, roomCodeInput)
-                .then(data => {
-                    setRedirect({ pathname: `room/${data.room}`, state: { name }});
-                });
-        }
+  const [viewState, setViewState] = React.useState(0);
+  const [roomCodeInput, setRoomCodeInput] = React.useState('');
+  const [redirect, setRedirect] = React.useState(false);
+  function handleJoinRoom() {
+    if (name.length > 0 && roomCodeInput.length === 4) {
+      joinRoom(name, roomCodeInput).then((data) => {
+        setRedirect({ pathname: `room/${data.room}`, state: { name } });
+      });
     }
-    function handleCreateRoom() {
-        if (name.length > 0) {
-            createRoom(name)
-                .then(data => {
-                    setRedirect({ pathname: `room/${data.room}`, state: { name }});
-                });
-        }
+  }
+  function handleCreateRoom() {
+    if (name.length > 0) {
+      createRoom(name).then((data) => {
+        setRedirect({ pathname: `room/${data.room}`, state: { name } });
+      });
     }
-    function showView(state) {
-        switch(state) {
-            case 0:
-                return (
-                    <div className="flx">
-                    <button onClick={handleCreateRoom}>CREATE ROOM</button>
-                        <button onClick={() => setViewState(1)}>JOIN ROOM</button>
-                    </div>
-                )
-            case 1:
-                return (
-                    <div className="flx">
-                        <InputStyle type="text" value={roomCodeInput} placeholder="Room Code" onChange={(e) => setRoomCodeInput(e.target.value)} />
-                        <button onClick={handleJoinRoom}>Join Room</button>
-                    </div>
-                )
-            default:
-                break;
-        }
+  }
+  function showView(state) {
+    switch (state) {
+      case 0:
+        return (
+          <div className="flx">
+            <button onClick={handleCreateRoom}>CREATE ROOM</button>
+            <button onClick={() => setViewState(1)}>JOIN ROOM</button>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="flx">
+            <InputStyle
+              type="text"
+              value={roomCodeInput}
+              placeholder="Room Code"
+              onChange={(e) => setRoomCodeInput(e.target.value)}
+            />
+            <button onClick={handleJoinRoom}>Join Room</button>
+          </div>
+        );
+      default:
+        break;
     }
-    return (
+  }
+  return (
     <div>
-        {showView(viewState)}
-        {redirect && <Redirect to={redirect} />}
+      {showView(viewState)}
+      {redirect && <Redirect to={redirect} />}
     </div>
-    );
+  );
 }

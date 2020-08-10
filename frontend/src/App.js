@@ -7,12 +7,10 @@ function App() {
   return (
     <Router>
       <div>
-      <Switch>
-        <Route exact path="/" component={Home}>
-        </Route>
-        <Route path="/room/:roomID" component={Room}>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/room/:roomID" component={Room}></Route>
+        </Switch>
       </div>
     </Router>
   );
